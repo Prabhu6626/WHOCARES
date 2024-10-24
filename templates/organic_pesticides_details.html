@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Pesticides Details</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <style>
+        /* Reset some default styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            display: flex;
+            justify-content: flex-start; /* Align items to the start */
+            align-items: center;
+            background-color: #28963c;
+            color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header img {
+            width: 120px;
+            margin-right: 20px; /* Add space between logo and title */
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            animation: slideIn 0.5s ease-out; /* Add animation */
+        }
+
+        .logo {
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(255, 246, 246, 0.3);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Main content styles */
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #28963c;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        h3 {
+            color: #28963c;
+            margin-top: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+
+        p {
+            margin: 15px 0;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        /* Button styles */
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #28963c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: pulse 1.5s infinite;
+        }
+
+        .back-link:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <a href="{{ url_for('home') }}"><img src="static/logo.png" alt="Logo"></a>
+        <h1>WHOCARES</h1>
+    </div>
+    
+    <main>
+        <h2>Organic Pesticides: Detailed Instructions</h2>
+
+        <h3>1. Neem Oil</h3>
+        <p><strong>Overview:</strong> Neem oil is a natural pesticide derived from the seeds of the neem tree. It is effective against a wide range of pests and has fungicidal properties.</p>
+        <p><strong>Materials Needed:</strong></p>
+        <ul>
+            <li>Neem oil</li>
+            <li>Water</li>
+            <li>A spray bottle</li>
+            <li>Liquid soap (as an emulsifier)</li>
+        </ul>
+        <p><strong>Steps:</strong></p>
+        <ol>
+            <li><strong>Prepare the Solution:</strong> In a spray bottle, mix 2 tablespoons of neem oil with 1 tablespoon of liquid soap. This helps the oil emulsify in water.</li>
+            <li><strong>Add Water:</strong> Fill the bottle with 1 quart of water and shake well to combine the ingredients.</li>
+            <li><strong>Apply to Plants:</strong> Spray the mixture onto the leaves and stems of affected plants, ensuring thorough coverage. Apply in the evening or early morning to avoid direct sunlight.</li>
+            <li><strong>Repeat as Necessary:</strong> Reapply every 7-14 days as needed, especially after rain.</li>
+        </ol>
+
+        <h3>2. Garlic Spray</h3>
+        <p><strong>Overview:</strong> Garlic spray is a natural repellent that can deter a variety of pests due to its strong odor.</p>
+        <p><strong>Materials Needed:</strong></p>
+        <ul>
+            <li>Garlic bulbs</li>
+            <li>Water</li>
+            <li>A blender</li>
+            <li>A strainer or cheesecloth</li>
+        </ul>
+        <p><strong>Steps:</strong></p>
+        <ol>
+            <li><strong>Blend Garlic:</strong> Peel and chop 2-3 garlic bulbs and blend them with 1 quart of water.</li>
+            <li><strong>Strain the Mixture:</strong> Use a strainer or cheesecloth to separate the liquid from the garlic pulp.</li>
+            <li><strong>Store the Spray:</strong> Transfer the garlic liquid into a spray bottle. You can refrigerate it for up to a week.</li>
+            <li><strong>Apply to Plants:</strong> Spray the mixture onto the leaves of plants to deter pests. Reapply after rain or watering.</li>
+        </ol>
+
+        <h3>3. Soap Spray</h3>
+        <p><strong>Overview:</strong> Soap spray is effective against soft-bodied insects like aphids and spider mites.</p>
+        <p><strong>Materials Needed:</strong></p>
+        <ul>
+            <li>Liquid soap (not detergent)</li>
+            <li>Water</li>
+            <li>A spray bottle</li>
+        </ul>
+        <p><strong>Steps:</strong></p>
+        <ol>
+            <li><strong>Mix the Solution:</strong> In a spray bottle, mix 2 tablespoons of liquid soap with 1 quart of water. Shake well to combine.</li>
+            <li><strong>Spray Affected Plants:</strong> Thoroughly spray the affected areas of your plants, ensuring to cover both the top and underside of leaves.</li>
+            <li><strong>Monitor and Repeat:</strong> Check your plants after a few days. If pests persist, repeat the application every 4-7 days until control is achieved.</li>
+        </ol>
+
+        <h3>4. Diatomaceous Earth</h3>
+        <p><strong>Overview:</strong> Diatomaceous earth is a natural powder made from fossilized algae that can kill pests by damaging their exoskeletons.</p>
+        <p><strong>Materials Needed:</strong></p>
+        <ul>
+            <li>Diatomaceous earth</li>
+            <li>A dusting applicator</li>
+        </ul>
+        <p><strong>Steps:</strong></p>
+        <ol>
+            <li><strong>Apply Diatomaceous Earth:</strong> Lightly dust diatomaceous earth onto the soil and plants. Focus on areas where pests are present.</li>
+            <li><strong>Reapply After Rain:</strong> Since diatomaceous earth can wash away with rain, reapply after any rainfall or heavy watering.</li>
+            <li><strong>Monitor Pests:</strong> Check for pest activity regularly and reapply as necessary.</li>
+        </ol>
+
+        <h3>Conclusion</h3>
+        <p>Utilizing organic pesticides is an effective way to manage pests while maintaining a healthy ecosystem. By using methods like neem oil, garlic spray, and diatomaceous earth, you can protect your plants from harmful pests without resorting to synthetic chemicals. Incorporate these practices into your gardening routine for a safer, more sustainable approach to pest management.</p>
+
+        <a href="{{ url_for('home') }}" class="back-link">Back to Home</a>
+    </main>
+</body>
+
+</html>

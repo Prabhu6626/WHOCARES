@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crops Predictor Based on Soil Type</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #28963c;
+            color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header img {
+            width: 120px; /* Adjusted for better appearance */
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            animation: slideIn 0.5s ease-out; /* Add animation */
+        }
+
+        .nav {
+            display: flex;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Container Styles */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #28963c;
+            animation: fadeIn 0.5s ease-in; /* Add animation */
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            animation: fadeIn 0.5s ease-in; /* Add animation */
+        }
+
+        select,
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #28963c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Animation Styles */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1.0s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <a href="{{ url_for('home') }}"><img src="static/logo.png" alt="Logo"></a>
+        <h1>Crop Predictor For Each Soil Type</h1>
+        <nav class="nav">
+            <a href="{{ url_for('predict') }}">Predict Crops</a>
+            <a href="{{ url_for('terrace_farming_crops') }}">Terrace Farming</a>
+            <a href="{{ url_for('soil_predict') }}">Soil Type Prediction</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h1>Crops Predictor Based on Soil Type</h1>
+
+        <form id="soil-form">
+            <h2>Identify Your Soil Type</h2>
+            <label for="texture">Soil Texture:</label>
+            <select name="texture" id="texture" required>
+                <option value="">Select Texture</option>
+                <option value="Sandy">Sandy</option>
+                <option value="Loamy">Loamy</option>
+                <option value="Clay">Clay</option>
+                <option value="Peaty">Peaty</option>
+                <option value="Saline">Saline</option>
+            </select>
+
+            <label for="drainage">Drainage:</label>
+            <select name="drainage" id="drainage" required>
+                <option value="">Select Drainage</option>
+                <option value="Well-drained">Well-drained</option>
+                <option value="Poorly-drained">Poorly-drained</option>
+            </select>
+
+            <label for="color">Color of Soil:</label>
+            <select name="color" id="color" required>
+                <option value="">Select Color</option>
+                <option value="Brown">Brown</option>
+                <option value="Black">Black</option>
+                <option value="Red">Red</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Gray">Gray</option>
+            </select>
+
+            <button type="submit">Identify Soil Type</button>
+        </form>
+
+        <div id="soil-type-result" style="display: none;">
+            <h2 class="fade-in">Soil Type: <span id="identified-soil-type"></span></h2>
+        </div>
+
+        <form id="crop-form" style="display: none;">
+            <h2>Enter Environmental Data</h2>
+            <label for="temperature">Temperature (°C):</label>
+            <input type="number" name="temperature" required>
+
+            <label for="humidity">Humidity (%):</label>
+            <input type="number" name="humidity" required>
+
+            <label for="ph">Soil pH:</label>
+            <input type="number" name="ph" step="0.1" required>
+
+            <label for="moisture">Soil Moisture (%):</label>
+            <input type="number" name="moisture" required>
+
+            <label for="rainfall">Rainfall (mm):</label>
+            <input type="number" name="rainfall" required>
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('soil-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const texture = document.getElementById('texture').value;
+            const drainage = document.getElementById('drainage').value;
+            const color = document.getElementById('color').value;
+
+            // Basic logic to identify soil type (you can make this more sophisticated)
+            let soilType = '';
+
+            if (texture === 'Sandy') {
+                soilType = 'Sandy';
+            } else if (texture === 'Loamy') {
+                soilType = 'Loamy';
+            } else if (texture === 'Clay') {
+                soilType = 'Clay';
+            } else if (texture === 'Peaty') {
+                soilType = 'Peaty';
+            } else if (texture === 'Saline') {
+                soilType = 'Saline';
+            }
+
+            // Display identified soil type
+            document.getElementById('identified-soil-type').innerText = soilType;
+            document.getElementById('soil-type-result').style.display = 'block';
+            document.getElementById('crop-form').style.display = 'block';
+            document.getElementById('crop-form').classList.add('fade-in'); // Apply fade-in animation to crop form
+        });
+
+        document.getElementById('crop-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            formData.append('soil_type', document.getElementById('identified-soil-type').innerText);
+
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                Swal.fire({
+                    title: `Recommended Crop: ${data.prediction}`,
+                    icon: 'success',
+                    confirmButtonText: 'Okay'
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'There was an error predicting the crop.',
+                    icon: 'error',
+                    confirmButtonText: 'Okay'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

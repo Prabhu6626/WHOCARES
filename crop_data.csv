@@ -1,0 +1,22 @@
+Temperature,Humidity,pH,Moisture,Rainfall,Crop
+20,70,6.5,40,100,Tomato
+25,60,6.0,50,150,Cucumber
+30,80,7.0,35,200,Spinach
+18,65,6.5,30,80,Lettuce
+22,75,6.8,45,120,Bell Pepper
+27,55,5.5,60,160,Cabbage
+23,50,6.0,55,140,Carrot
+19,85,7.2,20,90,Radish
+24,60,6.5,50,110,Basil
+21,68,5.8,40,130,Strawberry
+25,80,6.5,45,180,Chili Pepper
+22,65,6.0,55,120,Eggplant
+26,75,6.8,50,140,Zucchini
+19,70,6.2,30,100,Peas
+20,85,6.8,40,90,Thyme
+28,60,6.0,35,150,Mint
+23,70,5.5,40,110,Carrot
+24,50,6.2,55,70,Kale
+27,78,6.5,60,160,Fennel
+18,80,5.8,45,130,Broccoli
+30,65,6.5,50,100,Parsley

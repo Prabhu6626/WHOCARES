@@ -1,0 +1,30 @@
+SoilType,Temperature,Humidity,pH,Moisture,Rainfall,Crop
+Sandy,25,60,6.0,15,50,Wheat
+Loamy,20,70,6.5,20,80,Corn
+Clay,30,55,6.0,25,100,Rice
+Peaty,18,65,5.5,30,70,Potato
+Saline,22,50,7.0,10,40,Tomato
+Loamy,22,60,6.2,25,75,Barley
+Clay,28,65,6.8,30,90,Carrot
+Sandy,24,50,6.5,20,30,Cucumber
+Peaty,21,75,5.8,35,100,Onion
+Sandy,27,55,6.0,15,60,Strawberry
+Saline,23,45,7.5,10,50,Beetroot
+Loamy,26,65,6.7,22,85,Peas
+Clay,29,70,6.2,28,110,Cabbage
+Peaty,20,68,5.5,32,80,Spinach
+Sandy,25,55,6.5,15,45,Garlic
+Loamy,24,72,6.4,18,78,Kale
+Clay,27,63,6.0,27,95,Radish
+Saline,21,48,7.2,12,38,Chili Pepper
+Loamy,23,61,6.3,19,70,Pumpkin
+Peaty,19,66,5.9,33,85,Turnip
+Sandy,30,50,6.8,16,55,Watermelon
+Clay,26,62,6.1,24,98,Green Beans
+Sandy,28,57,6.4,20,65,Peppers
+Loamy,21,74,6.6,21,80,Tomatillo
+Peaty,22,69,5.7,31,72,Mustard Greens
+Clay,30,55,6.0,25,100,Leek
+Sandy,27,64,6.9,18,90,Zucchini
+Loamy,25,66,6.5,22,77,Broccoli
+Saline,22,58,7.1,10,40,Quinoa

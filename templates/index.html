@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHOCARES - Crop Prediction</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #28963c;
+    padding: 20px;
+    color: white;
+}
+
+.header img {
+    max-width: 120px; 
+    margin-right: 15px; 
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 28px; /* Increased font size */
+    color: #bcff90; /* Changed color to gold */
+}
+
+.nav {
+    display: flex;
+    margin-left: auto;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    text-align: center;
+    padding: 60px 20px; /* Increased padding for larger container */
+    max-width: 1150px; /* Adjust max-width as needed for wider container */
+    margin: 0 auto; /* Center the container */
+    background-color: #ffffff; /* Optional: Add background for contrast */
+    border-radius: 10px; /* Rounded corners for aesthetics */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+}
+
+h2 {
+    font-size: 30px; /* Increased font size for main heading */
+}
+
+.button-container {
+    display: flex; /* Use flexbox for inline buttons */
+    justify-content: center; /* Center the buttons */
+    gap: 20px; /* Space between buttons */
+}
+
+.button {
+    padding: 10px 50px; /* Increased horizontal padding for wider buttons */
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    min-width: 180px; /* Increased minimum width for buttons */
+}
+
+.button:hover {
+    background-color: #004494;
+}
+
+.info {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.animated-section {
+    position: relative;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #e9f9e9;
+    border-radius: 10px;
+    animation: fadeIn 2s ease-in-out;
+}
+.animated {
+    position: relative;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #b6d3ff;
+    border-radius: 10px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="{{ url_for('home') }}"><img src="static/logo.png" alt="Logo"></a>
+        <h1>WHOCARES</h1>
+        <nav class="nav">
+            <a href="{{ url_for('predict') }}">Predict Crops</a>
+            <a href="{{ url_for('terrace_farming_crops') }}">Terrace Farming</a>
+            <a href="{{ url_for('soil_predict') }}">Soil Type Prediction</a>
+        </nav>
+    </div><br><br>
+    <div class="container">
+        <h2>Welcome to WHOCARES Crop Prediction System</h2>
+        <p>Your go-to solution for predicting the best crops based on environmental conditions.</p>
+        <div class="button-container">
+            <button class="button" onclick="window.location.href='{{ url_for('predict') }}'">Predict Crops</button>
+            <button class="button" onclick="window.location.href='{{ url_for('terrace_farming_crops') }}'">Terrace Farming Predict Crops</button>
+            <button class="button" onclick="window.location.href='{{ url_for('soil_predict') }}'">Predict Crops For Each Soil Type</button>
+        </div>
+    </div>
+    
+    
+    
+    
+    <div class="info">
+        <h2>How to Make Organic Fertilizers and Pesticides</h2>
+        <div class="animated" class="organic-fertilizers">
+            <h3>Organic Fertilizers</h3>
+    
+            <h4>1. Compost</h4>
+            <p><strong>Materials Needed:</strong> Kitchen scraps, yard waste.</p>
+            <p><strong>Steps:</strong> 
+                1. Collect materials and layer them in a compost bin. 
+                2. Turn the pile every few weeks. 
+                3. Wait 2-6 months until it turns into dark compost.
+            </p>
+    
+            <h4>2. Banana Peel Fertilizer</h4>
+            <p><strong>Materials Needed:</strong> Banana peels, water.</p>
+            <p><strong>Steps:</strong> 
+                1. Chop banana peels and soak in water for 24-48 hours. 
+                2. Use the nutrient-rich water for watering plants.
+            </p>
+    
+            <h4>3. Eggshell Fertilizer</h4>
+            <p><strong>Materials Needed:</strong> Eggshells.</p>
+            <p><strong>Steps:</strong> 
+                1. Rinse, dry, and crush eggshells into a powder. 
+                2. Sprinkle around plants for calcium enrichment.
+            </p>
+            
+            <a href="{{ url_for('organic_fertilizers') }}" class="read-more">Read More</a>
+        </div>
+    
+        <div class="animated" class="organic-pesticides">
+            <h3>Organic Pesticides</h3>
+    
+            <h4>1. Neem Oil Spray</h4>
+            <p><strong>Materials Needed:</strong> Neem oil, water, liquid soap.</p>
+            <p><strong>Steps:</strong> 
+                1. Mix neem oil, soap, and water. 
+                2. Spray on plants every 7-14 days.
+            </p>
+    
+            <h4>2. Garlic Spray</h4>
+            <p><strong>Materials Needed:</strong> Garlic, water, liquid soap.</p>
+            <p><strong>Steps:</strong> 
+                1. Chop garlic and infuse in water overnight. 
+                2. Strain, mix with soap, and spray on plants.
+            </p>
+    
+            <h4>3. Soap and Water Solution</h4>
+            <p><strong>Materials Needed:</strong> Liquid soap, water.</p>
+            <p><strong>Steps:</strong> 
+                1. Mix soap with water. 
+                2. Spray directly on pests.
+            </p>
+    
+            <a href="{{ url_for('organic_pesticides') }}">Read More</a>
+        </div>
+    </div>
+        <div class="animated-section">
+            <p>This section will demonstrate how to create organic fertilizers and pesticides.</p>
+        </div>
+
+    <script>
+
+    </script>
+</body>
+</html>
